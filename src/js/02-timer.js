@@ -44,7 +44,7 @@ function chosenDate(selectedDates) {
 }
 
 function addLeadingZero(formatDate) {
-  days.textContent = formatDate.day;
+  days.textContent = formatDate.days;
   hours.textContent = formatDate.hours;
   minutes.textContent = formatDate.minutes;
   seconds.textContent = formatDate.seconds;
