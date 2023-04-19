@@ -39,7 +39,7 @@ function chosenDate(selectedDates) {
 
     timeDifference = selectedDates.getTime() - currentDate;
     formatDate = convertMs(timeDifference);
-    addLeadingZero(formatDate.padStart(2, '0'));
+    addLeadingZero(formatDate);
 
 }
 
@@ -49,7 +49,7 @@ function addLeadingZero(formatDate) {
   minutes.textContent = formatDate.minutes;
   seconds.textContent = formatDate.seconds;
 }
-console.log(formatDate.days);
+
 
 
 button.addEventListener('click', onClick);
@@ -66,7 +66,7 @@ function startTimer() {
          if (seconds.textContent <= 0 && minutes.textContent <= 0) {
            clearInterval(setTimer);
          } else {
-           formatDate = convertMs(timeDifference);
+           formatDate = convertMs(timeDifference).padStart(2, '0');
            addLeadingZero(formatDate);
          }
     }
