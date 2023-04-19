@@ -42,13 +42,14 @@ function chosenDate(selectedDates) {
     addLeadingZero(formatDate);
 
 }
-
+ 
 function addLeadingZero(formatDate) {
-  days.textContent = formatDate.days;
-  hours.textContent = formatDate.hours;
-  minutes.textContent = formatDate.minutes;
-  seconds.textContent = formatDate.seconds;
+  days.textContent = formatDate.days.toString().padStart(2, '0');
+  hours.textContent = formatDate.hours.toString().padStart(2, '0');
+  minutes.textContent = formatDate.minutes.toString().padStart(2, '0');
+  seconds.textContent = formatDate.seconds.toString().padStart(2, '0');
 }
+
 
 
 
@@ -66,7 +67,7 @@ function startTimer() {
          if (seconds.textContent <= 0 && minutes.textContent <= 0) {
            clearInterval(setTimer);
          } else {
-           formatDate = convertMs(timeDifference).padStart(2, '0');
+           formatDate = convertMs(timeDifference);
            addLeadingZero(formatDate);
          }
     }

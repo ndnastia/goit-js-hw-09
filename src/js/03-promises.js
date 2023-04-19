@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 
 const form = document.querySelector('.form');
+const submit = document.querySelector('.submit')
 
 
 form.addEventListener('submit', onSubmit);
@@ -10,18 +11,21 @@ function onSubmit(evt) {
   
   let delay = Number(form.delay.value);
 
-  for (let i = 0; i <= form.amount.value; i += 1) {
-    form.setAttribute('disabled', 'disabled');
+  for (let i = 1; i <= form.amount.value; i += 1) {
+    submit.setAttribute('disabled', 'disabled');
     createPromise(i, delay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        
       })
       .catch(({ position, delay }) => {
         Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-      });
+      })
+      .finally (() => submit.removeAttribute('disabled'));
     
     delay += Number(form.step.value);
   }
+  // submit.removeAttribute('disabled');
 }
 
 function createPromise(position, delay) {
