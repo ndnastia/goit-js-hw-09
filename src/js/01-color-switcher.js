@@ -2,18 +2,24 @@ const startBtn = document.querySelector('[data-start]');
 const stopBtn = document.querySelector('[data-stop]');
 const documentColor = document.body;
 
-startBtn.addEventListener('click', () => {
-   timerId = setInterval(() => {
-        documentColor.style.backgroundColor = getRandomHexColor();
-    }, 1000)  
+let timerId = null;
+startBtn.addEventListener('click', () => {  
+    timerId = setInterval(() => {
+       documentColor.style.backgroundColor = getRandomHexColor(); 
+    }, 1000)
+   startBtn.setAttribute('disabled', 'disabled');
+    // startBtn.removeAttribute('disable');
 });
 stopBtn.addEventListener('click', onStop);
 
 
 function onStop() {
-    clearInterval(timerId);
-    documentColor.style.backgroundColor = 'white';
+    stopBtn.setAttribute('disabled', 'disabled');
+    startBtn.removeAttribute('disabled');
+    clearInterval(timerId); 
 }
+
+stopBtn.removeAttribute('disabled');
 
 
 
