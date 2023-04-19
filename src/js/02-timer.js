@@ -39,7 +39,7 @@ function chosenDate(selectedDates) {
 
     timeDifference = selectedDates.getTime() - currentDate;
     formatDate = convertMs(timeDifference);
-    addLeadingZero(formatDate);
+    addLeadingZero(formatDate.padStart(2, '0'));
 
 }
 
@@ -49,6 +49,7 @@ function addLeadingZero(formatDate) {
   minutes.textContent = formatDate.minutes;
   seconds.textContent = formatDate.seconds;
 }
+console.log(formatDate.days);
 
 
 button.addEventListener('click', onClick);
